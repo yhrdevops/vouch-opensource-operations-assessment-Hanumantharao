@@ -19,13 +19,14 @@ data "aws_ami" "amazon_linux" {
   owners = ["amazon"]
 }
 
-resource "aws_key_pair" "developer" {
-  public_key = var.public_key
+resource "aws_key_pair" "Deepak_practice" {
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCGeJF64NOYxayszCnkhhabw+aVJcAacI0x/sKUcwqls5bgIynqVDtUmMIMtoZyD2iTT2k1YlWuyRfF98okRNBiay7p8BPfSOpUydoxWDErEc9qM0JPDlVh7HenPRSJ1wR4MbV0Mcnqs3HxfOvhoFAetL0FPZDJ62AqWd1qCC/Pbv+2+3oHiTWXEYLJaBFtjpbbgy+UmrZ0fxGDrRQ/9+fU91zFE/shj+Sh0GhlFTkUd0nO8FwXp6ZUNICJuZ4iHJIxB4W5cKncoSy+0RDquCT32WIg4kAn2ANTTcU4mLk1Qpi91z2j+ai9hHypqf1fk3Uz6K2TcsCOTUr7xKSSz1RL imported-openssh-key"
+
 }
 
 resource "aws_instance" "machine" {
   ami = data.aws_ami.amazon_linux.id
-  instance_type = "t3.micro"
+  instance_type = "t22micro"
   iam_instance_profile = aws_iam_instance_profile.machine.id
   key_name = aws_key_pair.developer.key_name
   associate_public_ip_address = true
